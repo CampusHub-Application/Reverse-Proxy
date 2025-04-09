@@ -39,9 +39,9 @@ jobs:
         
       - name: Setup SSL Certificate, Key, dan DHParams
         run: |
-          printf -- "-----BEGIN CERTIFICATE-----\n\n%s\n\n-----END CERTIFICATE-----" "${{secrets.CERT}}" > ./SSL/cert.pem
-          printf -- "-----BEGIN DH PARAMETERS-----\n\n%s\n\n-----END DH PARAMETERS-----" "${{secrets.DHPARAMS}}" > ./SSL/dhparam.pem
-          printf -- "-----BEGIN PRIVATE KEY-----\n\n%s\n\n-----END PRIVATE KEY-----" "${{secrets.KEY}}" > ./SSL/key.pem
+          printf -- "-----BEGIN CERTIFICATE-----\n%s\n-----END CERTIFICATE-----" "${{secrets.CERT}}" > ./SSL/cert.pem
+          printf -- "-----BEGIN DH PARAMETERS-----\n%s\n-----END DH PARAMETERS-----" "${{secrets.DHPARAMS}}" > ./SSL/dhparam.pem
+          printf -- "-----BEGIN PRIVATE KEY-----\n%s\n-----END PRIVATE KEY-----" "${{secrets.KEY}}" > ./SSL/key.pem
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
@@ -109,6 +109,7 @@ jobs:
     needs: build
     
     steps:
+
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -117,4 +118,8 @@ jobs:
             password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Docker-compose deployment
-        run: docker compose -f /campushub/docker-compose.yml up -d
+        run: |
+          docker compose -f /campushub/docker-compose.yml down
+          docker rmi ghcr.io/${{ github.repository }}:main
+          docker compose -f /campushub/docker-compose.yml up -d
+          docker system prune -af
