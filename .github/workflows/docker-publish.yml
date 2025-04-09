@@ -126,6 +126,6 @@ jobs:
       - name: Docker-compose deployment
         run: |
           docker compose -f /campushub/docker-compose.yml down
-          docker rmi ${{ steps.meta.outputs.tags }}:main
+          docker rmi ${{ steps.meta.outputs.tags }}
           docker compose -f /campushub/docker-compose.yml up -d
           docker system prune -af
