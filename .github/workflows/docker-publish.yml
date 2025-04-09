@@ -42,9 +42,6 @@ jobs:
           echo "${{secrets.CERT}}" > ./SSL/cert.pem
           echo "${{secrets.KEY}}" > ./SSL/key.pem
           echo "${{secrets.DHPARAMS}}" > ./SSL/dhparams.pem
-          cat ./SSL/cert.pem
-          cat ./SSL/key.pem
-          cat ./SSL/dhparams.pem
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
