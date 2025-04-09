@@ -39,9 +39,9 @@ jobs:
         
       - name: Setup SSL Certificate, Key, dan DHParams
         run: |
-          printf "-----BEGIN CERTIFICATE-----\n%s\n-----END CERTIFICATE-----\n" "${{secrets.CERT}}" > ./SSL/cert.pem
-          printf "-----BEGIN DH PARAMETERS-----\n%s\n-----END DH PARAMETERS-----\n" "${{secrets.DHPARAMS}}" > ./SSL/dhparam.pem
-          printf "-----BEGIN PRIVATE KEY-----\n%s\n-----END PRIVATE KEY-----\n" "${{secrets.KEY}}" > ./SSL/key.pem
+          printf -- "-----BEGIN CERTIFICATE-----\n%s\n-----END CERTIFICATE-----" "${{secrets.CERT}}" > ./SSL/cert.pem
+          printf -- "-----BEGIN DH PARAMETERS-----\n%s\n-----END DH PARAMETERS-----" "${{secrets.DHPARAMS}}" > ./SSL/dhparam.pem
+          printf -- "-----BEGIN PRIVATE KEY-----\n%s\n-----END PRIVATE KEY-----" "${{secrets.KEY}}" > ./SSL/key.pem
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
