@@ -39,9 +39,10 @@ jobs:
         
       - name: Setup SSL Certificate, Key, dan DHParams
         run: |
-          echo "${{secrets.CERT}}" > SSL/cert.pem
-          echo "${{secrets.KEY}}" > SSL/key.pem
-          echo "${{secrets.DHPARAMS}}" > SSL/dhparams.pem
+          echo "${{secrets.CERT}}" > ./SSL/cert.pem
+          echo "${{secrets.KEY}}" > ./SSL/key.pem
+          echo "${{secrets.DHPARAMS}}" > ./SSL/dhparams.pem
+          ls -al ./SSL
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
