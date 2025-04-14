@@ -1,4 +1,4 @@
-# Readme ini ditulis oleh ChatGPT, yang biasa buat lagi sibuk melamun.
+# Readme ini ditulis oleh ChatGPT, yang biasa buat lagi sibuk melamun
 
 ## Ikhtisar
 Repositori ini berisi kode untuk sebuah aplikasi proxy sederhana menggunakan Nginx. Aplikasi ini memungkinkan pengalihan permintaan masuk ke server backend yang berbeda berdasarkan aturan yang telah ditentukan sebelumnya. Ini adalah implementasi dasar yang dirancang untuk memberikan solusi sederhana dalam melakukan pengalihan permintaan di berbagai lingkungan web.
