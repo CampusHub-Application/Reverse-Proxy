@@ -1,7 +1,4 @@
-.git
-.gitkeep
+.github
 .gitignore
-.gitlab-ci.yml
-.editorconfig
 Dockerfile
 Readme.md
